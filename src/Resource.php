@@ -93,7 +93,8 @@ trait Resource
             [
                 'concurrency' => 5,
                 'fulfilled' => function ($response, $index) use ($ids, &$results) {
-                    $results[$ids[$index]] = ['state' => 'fulfilled', 'value' => $response];
+                    if (isset($ids[$index]))
+                      $results[$ids[$index]] = ['state' => 'fulfilled', 'value' => $response];
                 }
             ]
         );
